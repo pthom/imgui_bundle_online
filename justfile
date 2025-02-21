@@ -3,8 +3,6 @@ default:
 
 # Run the npm dev server
 srv_dev:
-    # python3 -m http.server 8005
-    # python3 ../ci_scripts/webserver_multithread_policy.py -p 8005
     cd single_page_book_app && npm run dev
 
 
@@ -15,7 +13,7 @@ gpt_files_content:
 tutorial_json_toc:
     python scripts/convert_toc.py
 
-tutorial_prepare: tutorial-json_toc
+tutorial_prepare: tutorial_json_toc
     cd single_page_book_app && npm install
 
 tutorial_book:
@@ -23,4 +21,3 @@ tutorial_book:
 
 tutorial_book_pdf:
     cd jbook && jupyter-book build --builder pdfhtml .
-
