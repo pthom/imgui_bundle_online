@@ -175,15 +175,37 @@ body {
 .draggable-resizable {
     position: fixed;
     bottom: 1rem;
-    right: 1rem;
-    width: 20%;
-    height: 20%;
+    left: 1rem;
+    width: 240px;
+    height: 40px;
     border: 1px solid #ccc;
-    background-color: blue;
+    background-color: #f0f0f0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     resize: both;
     overflow: hidden;
     z-index: 1000;
+    transition: height 0.3s ease-out;
+    display: none; /* Hidden by default */
+}
+
+.draggable-resizable.collapsed {
+    height: 40px;
+    width: 240px;
+    resize: none;
+}
+
+.draggable-resizable.expanded {
+    height: 40%;
+    width: 40%;
+    resize: both;
+}
+
+.draggable-resizable.maximized {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    resize: none;
 }
 
 #canvas-title-bar {
@@ -194,11 +216,35 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+#canvas-window-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.canvas-window-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas-window-btn:hover {
+    color: #ccc;
 }
 
 #canvas-content {
     width: 100%;
-    height: calc(100% - 2rem);
+    height: calc(100% - 40px);
+    background-color: #e0e0e0;
 }
 
 .canvas-emscripten {

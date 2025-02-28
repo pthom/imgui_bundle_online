@@ -30,12 +30,16 @@
         <div class="sections-sidebar"></div>
     </aside>
 </div>
-<div id="canvas-window" class="draggable-resizable">
+<div id="canvas-window" class="draggable-resizable collapsed">
     <div id="canvas-title-bar">
         <span>Canvas Window</span>
-        <button id="maximize-btn">Maximize</button>
+        <div id="canvas-window-buttons">
+            <button id="minimize-btn" class="canvas-window-btn" title="Minimize">−</button>
+            <button id="expand-btn" class="canvas-window-btn" title="Expand">□</button>
+            <button id="maximize-btn" class="canvas-window-btn" title="Maximize">▢</button>
+        </div>
     </div>
-    <div id="canvas-content" style="background-color: blue;">
+    <div id="canvas-content">
         <canvas class="canvas-emscripten" id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
     </div>
 </div>
