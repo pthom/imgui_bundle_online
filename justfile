@@ -14,11 +14,6 @@ copy_dist:
     cp {{FIATLIGHT_FOLDER}}/dist/*.whl pyodide_dist/
     cp {{PROBABL_FOLDER}}/scatter/dist/*.whl pyodide_dist/
 
-
-default:
-  just --list
-
-
 gpt_files_content:
     for f in $(cat f.txt); do echo "===========================================================================";echo "File $f"; echo "==========================================================================="; echo '```'; cat $f; echo '```'; done
 
