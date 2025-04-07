@@ -5,3 +5,4 @@ _brainstorm/
 __pycache__
 .idea/
 v3*
+pyodide_dist/
