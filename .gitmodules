@@ -1,0 +1,3 @@
+[submodule "imgui_bundle_pyodide_tooling"]
+	path = imgui_bundle_pyodide_tooling
+	url = git@github.com:pthom/imgui_bundle_pyodide_tooling.git
