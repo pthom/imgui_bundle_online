@@ -1,7 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; }
+        #canvas { display: block; width: 100%; height: 100%;}
+    </style>
+    <script src="pyodide_dist/pyodide.js"></script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+
+    // ====================== Start of Python code ============================
+    pythonCode = `
 """# Lorenz Attractor & Butterfly Effect
 This is a simple example of the Lorenz Attractor. It shows two trajectories that diverge
 because of a small initial difference, illustrating chaos theory in action.
-
 The term **butterfly effect** in popular media may stem from the real-world implications
 of the Lorenz attractor, namely that tiny changes in initial conditions evolve to
 completely different trajectories.
@@ -58,18 +72,29 @@ class CompareLorenzTrajectories:
         self.traj2 = AnimatedLorenzTrajectory(x + self.initial_delta, y, z)
 
     def gui_params(self):
+        slider_width = hello_imgui.em_size(10)
+
+        imgui.set_next_item_width(slider_width)
         _, PARAMS.sigma = imgui.slider_float("Sigma", PARAMS.sigma, 0.0, 100.0)
         imgui.set_item_tooltip("Controls the rate of divergence between nearby points (chaos level).")
+        imgui.same_line()
 
+        imgui.set_next_item_width(slider_width)
         _, PARAMS.rho = imgui.slider_float("Rho", PARAMS.rho, 0.0, 100.0)
         imgui.set_item_tooltip("Determines the size and shape of the attractor.")
+        imgui.same_line()
 
+        imgui.set_next_item_width(slider_width)
         _, PARAMS.beta = imgui.slider_float("Beta", PARAMS.beta, 0.0, 10.0)
         imgui.set_item_tooltip("A damping parameter affecting vertical movement.")
+        imgui.same_line()
 
+        imgui.set_next_item_width(slider_width)
         _, PARAMS.dt = imgui.slider_float("dt", PARAMS.dt, 0.0, 0.05)
         imgui.set_item_tooltip("Time step size for numerical integration (smaller is smoother).")
+        imgui.same_line()
 
+        imgui.set_next_item_width(slider_width)
         _, self.initial_delta = imgui.slider_float("Initial Delta", self.initial_delta, 0.0, 0.2)
         imgui.set_item_tooltip("Initial difference between trajectories to demonstrate divergence.")
 
@@ -77,7 +102,7 @@ class CompareLorenzTrajectories:
             self.init_trajectories()
 
     def gui_plot(self):
-        if implot3d.begin_plot("Lorenz Attractor", hello_imgui.em_to_vec2(40, 40)):
+        if implot3d.begin_plot("Lorenz Attractor", hello_imgui.em_to_vec2(30, 30)):
             implot3d.setup_axes("X", "Y", "Z",
                                 implot3d.AxisFlags_.auto_fit.value, implot3d.AxisFlags_.auto_fit.value, implot3d.AxisFlags_.auto_fit.value)
             implot3d.plot_line("Trajectory", self.traj1.xs, self.traj1.ys, self.traj1.zs)
@@ -102,3 +127,39 @@ immapp.run(lambda: lorenz_comparer.gui(),
            window_size_auto=True,
            window_title="Butterfly Effect",
            fps_idle=0)
+`
+    // ====================== End of Python code ==============================
+
+
+    async function main(){
+        // This enables to use right click in the canvas
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Load Pyodide
+        let pyodide = await loadPyodide();
+
+        // Setup SDL, cf https://pyodide.org/en/stable/usage/sdl.html
+        // 1. Set the canvas for SDL2
+        let sdl2Canvas = document.getElementById("canvas");
+        pyodide.canvas.setCanvas2D(sdl2Canvas);
+        // 2. SDL requires to enable an opt-in flag :
+        pyodide._api._skip_unwind_fatal_error = true;
+
+        // Load packages
+        // 1. Initialize micropip
+        await pyodide.loadPackage("micropip");
+        const micropip = pyodide.pyimport("micropip");
+        // 2. Install imgui_bundle and its dependencies
+        await micropip.install('imgui_bundle');
+        await micropip.install("typing_extensions")
+        await micropip.install("pydantic")
+        await micropip.install("munch")
+        await micropip.install("numpy")
+
+        // Run the Python code
+        pyodide.runPython(pythonCode);
+    }
+    main();
+</script>
+</body>
+</html>
