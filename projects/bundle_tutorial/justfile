@@ -1,3 +1,6 @@
+default:
+    just --list
+
 # Create a json version of the table of content (for Single Page HTML)
 tutorial_json_toc:
     python scripts/convert_toc.py
