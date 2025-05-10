@@ -40,10 +40,28 @@
         </div>
     </div>
     <div id="canvas-content">
-        <canvas class="canvas-emscripten" id="canvas" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
+        <canvas class="canvas-emscripten" id="canvas" tabindex="0"
+                oncontextmenu="event.preventDefault()"
+                style="width: 100%; height: 100%;"
+        ></canvas>
     </div>
 </div>
 <script src="pyodide_dist/pyodide.js"></script>
 <script type="module" src="resources_singlepage/app.js"></script>
+
+<script>
+    function triggerWindowResizeToForceImGuiSizeRefresh() {
+        // When the canvas size is updated, we need to trigger a window resize event
+        // to force ImGui to recompute its size
+        if (typeof window.dispatchEvent === "function") {
+            window.dispatchEvent(new Event("resize"));
+        }
+    }
+
+    // Recompute the canvas size when the parent resizes
+    const observer = new ResizeObserver(triggerWindowResizeToForceImGuiSizeRefresh);
+    observer.observe(document.getElementById("canvas-window"));
+
+</script>
 </body>
 </html>
