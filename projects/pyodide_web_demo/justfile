@@ -1,0 +1,42 @@
+default:
+  just --list
+
+
+# Run the a webserver on port 8005
+srv:
+    # python3 -m http.server 8005
+    python3 webserver_multithread_policy.py -p 8005
+
+
+#gpt_files_content:
+#    for f in $(cat f.txt); do echo "===========================================================================";echo "File $f"; echo "==========================================================================="; echo '```'; cat $f; echo '```'; done
+
+# Define the remote folder and user/host as variables
+#REMOTE_FOLDER := "/home/pascal/dvp/_Bundle/_Pyodide/pyodide"
+#REMOTE_USER_HOST := "pascal@192.168.1.50"
+#FIATLIGHT_FOLDER := "../../../fiatlight"
+#PROBABL_FOLDER := "../../../fiatlight/_drafts/_probabl_drafts"
+#
+#BASE_PACKAGE_LIST := "numpy Pillow pandas ipython requests opencv-python typing-extensions pydantic munch matplotlib future scikit-learn"
+
+
+
+
+#fiatlight_wheel:
+#    cd {{FIATLIGHT_FOLDER}} && pipx run build
+#
+#scatter_wheel:
+#    cd {{PROBABL_FOLDER}}/scatter && pipx run build
+
+
+## Copy the dist folder from the remote machine
+#copy_dist: fiatlight_wheel scatter_wheel
+#    mkdir -p pyodide_dist
+#    rsync -avz --delete {{REMOTE_USER_HOST}}:{{REMOTE_FOLDER}}/dist/ pyodide_dist/
+#    cp {{FIATLIGHT_FOLDER}}/dist/*.whl pyodide_dist/
+#    cp {{PROBABL_FOLDER}}/scatter/dist/*.whl pyodide_dist/
+
+
+#rsync_tq:
+#    rsync -avz --delete . pascal@traineq.org:HTML/probabl/
+
