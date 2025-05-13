@@ -11,7 +11,13 @@
     <div class="header-buttons">
         <a href="https://github.com" target="_blank" class="header-btn">GitHub</a>
     </div>
+    <button id="page-sections-btn" class="toggle-sidebar" title="Contents">
+        <span class="icon">📖</span>
+    </button>
 </header>
+
+
+
 <div class="layout-container">
     <nav id="toc-sidebar">
         <h1>Immediate GUI Tutorial</h1>
@@ -22,10 +28,12 @@
     <main id="content-area-wrapper">
         <div id="content-area"></div>
     </main>
-    <aside id="sections-sidebar">
-        <div class="sections-sidebar"></div>
-    </aside>
 </div>
+
+<!-- page-sections-panel: This is where the page sections will be displayed
+     in a panel which is hidden by default, and slides from the right -->
+<div id="page-sections-panel" class="page-sections"></div>
+
 <div id="canvas-window" class="draggable-resizable collapsed">
     <div id="canvas-title-bar">
         <span>Canvas Window</span>
@@ -42,6 +50,7 @@
         ></canvas>
     </div>
 </div>
+
 <script src="pyodide_dist/pyodide.js"></script>
 <script type="module" src="resources_singlepage/app.js"></script>
 
@@ -57,6 +66,7 @@
     // Recompute the canvas size when the parent resizes
     const observer = new ResizeObserver(triggerWindowResizeToForceImGuiSizeRefresh);
     observer.observe(document.getElementById("canvas-window"));
+
 
 </script>
 </body>

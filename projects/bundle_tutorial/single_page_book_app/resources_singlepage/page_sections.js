@@ -1,7 +1,29 @@
+// Toggle contents panel logic
+const pageSectionsBtn = document.getElementById("page-sections-btn");
+const pageSectionsPanel = document.getElementById("page-sections-panel");
+let pageSectionsPanelVisible = false;
+
+export function registerPageSectionEvents() {
+    pageSectionsBtn.addEventListener("click", (e) => {
+        pageSectionsPanelVisible = !pageSectionsPanelVisible;
+        pageSectionsPanel.classList.toggle("active", pageSectionsPanelVisible);
+        e.stopPropagation();
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener("click", (e) => {
+        if (pageSectionsPanelVisible && !pageSectionsPanel.contains(e.target) && e.target !== pageSectionsBtn) {
+            pageSectionsPanelVisible = false;
+            pageSectionsPanel.classList.remove("active");
+        }
+    });
+}
+
+
 export function updatePageSections() {
     const contentArea = document.getElementById("content-area");
     const h2Elements = contentArea.querySelectorAll("h2");
-    const sectionsContainer = document.querySelector(".sections-sidebar");
+    const sectionsContainer = document.getElementById("page-sections-panel");
 
     // Clear previous breadcrumbs
     sectionsContainer.innerHTML = "";
