@@ -17,57 +17,35 @@
 </header>
 
 
+<!-- A splitter between the documentation content and the ImGui canvas
+    (using Split.js) -->
+<div class="split">
+    <div class="layout-container" id="layout-container">
+        <nav id="toc-sidebar">
+            <h1>Immediate GUI Tutorial</h1>
+            <ul>
+                <!-- Navigation items -->
+            </ul>
+        </nav>
+        <main id="content-area-wrapper">
+            <div id="content-area"></div>
+        </main>
+    </div>
 
-<div class="layout-container">
-    <nav id="toc-sidebar">
-        <h1>Immediate GUI Tutorial</h1>
-        <ul>
-            <!-- Navigation items -->
-        </ul>
-    </nav>
-    <main id="content-area-wrapper">
-        <div id="content-area"></div>
-    </main>
+    <div id="imgui-canvas-div">
+        <canvas class="canvas-emscripten" id="canvas" tabindex="0"
+                oncontextmenu="event.preventDefault()"
+                style="width: 100%; height: 100%;"
+        ></canvas>
+    </div>
+
 </div>
 
 <!-- page-sections-panel: This is where the page sections will be displayed
      in a panel which is hidden by default, and slides from the right -->
 <div id="page-sections-panel" class="page-sections"></div>
 
-<div id="canvas-window" class="draggable-resizable collapsed">
-    <div id="canvas-title-bar">
-        <span>Canvas Window</span>
-        <div id="canvas-window-buttons">
-            <button id="minimize-btn" class="canvas-window-btn" title="Minimize">−</button>
-            <button id="expand-btn" class="canvas-window-btn" title="Expand">□</button>
-            <button id="maximize-btn" class="canvas-window-btn" title="Maximize">▢</button>
-        </div>
-    </div>
-    <div id="canvas-content">
-        <canvas class="canvas-emscripten" id="canvas" tabindex="0"
-                oncontextmenu="event.preventDefault()"
-                style="width: 100%; height: 100%;"
-        ></canvas>
-    </div>
-</div>
-
 <script src="pyodide_dist/pyodide.js"></script>
 <script type="module" src="resources_singlepage/app.js"></script>
-
-<script>
-    function triggerWindowResizeToForceImGuiSizeRefresh() {
-        // When the canvas size is updated, we need to trigger a window resize event
-        // to force ImGui to recompute its size
-        if (typeof window.dispatchEvent === "function") {
-            window.dispatchEvent(new Event("resize"));
-        }
-    }
-
-    // Recompute the canvas size when the parent resizes
-    const observer = new ResizeObserver(triggerWindowResizeToForceImGuiSizeRefresh);
-    observer.observe(document.getElementById("canvas-window"));
-
-
-</script>
 </body>
 </html>

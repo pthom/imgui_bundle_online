@@ -5,7 +5,6 @@ import { python } from "@codemirror/lang-python";
 import { cpp } from "@codemirror/lang-cpp";
 import { marked } from "marked";
 import { runPythonCode } from "./pyodide_helper.js";
-import { showCanvasWindow, toggleCanvasWindow } from "./canvas_drag.js";
 
 
 // _ stands for private function to this module. Let's adopt this convention!
@@ -61,7 +60,6 @@ function _createEditorRunPythonCodeButton(editorView) {
 
     runButton.addEventListener("click", () => {
         const currentCode = editorView.state.doc.toString();
-        showCanvasWindow();
         runPythonCode(currentCode);
     });
     return runButton;
