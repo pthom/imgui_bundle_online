@@ -197,7 +197,7 @@ function _addCodeEditorTabEventListeners(container) {
 }
 
 
-export async function prepareCodeEditors(mdText, baseUrlPath) {
+export async function renderMarkdownAndCodeEditors(mdText, baseUrlPath) {
     // Process `{codes_include}` blocks into editor placeholders
     const processedMdText = await _processCodesIncludeInMarkdown(mdText, baseUrlPath);
 
@@ -218,6 +218,10 @@ export async function prepareCodeEditors(mdText, baseUrlPath) {
     // Update the content area with the rendered HTML
     const contentArea = document.getElementById("content-area");
     contentArea.innerHTML = renderedHtml;
+
+    // Scroll to the top of the content area
+    const wrapper = document.getElementById("content-area-wrapper");
+    wrapper.scrollTo({ top: 0 });
 
     // Initialize CodeMirror editors for the placeholders
     //await _initializeCodeMirrorEditors(baseUrlPath);
