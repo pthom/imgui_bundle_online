@@ -27,10 +27,21 @@ function _createSplitBetweenContentAndImGuiCanvas()
     });
 }
 
+function _registerToggleTocBtnEvents()
+{
+    const toggleTocBtn = document.getElementById("toggle-toc-btn");
+    const tocSidebar = document.getElementById("toc-sidebar");
+
+    toggleTocBtn.addEventListener("click", () => {
+        tocSidebar.classList.toggle("hidden");
+    });
+}
+
 async function initializeAll() {
     await initTOC();
 
     registerPageSectionEvents();
+    _registerToggleTocBtnEvents();
 
     _createSplitBetweenContentAndImGuiCanvas();
 
