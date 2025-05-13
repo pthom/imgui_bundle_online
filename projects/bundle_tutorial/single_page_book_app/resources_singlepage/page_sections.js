@@ -21,24 +21,31 @@ export function registerPageSectionEvents() {
 
 
 export function updatePageSections() {
-    const contentArea = document.getElementById("content-area");
-    const h2Elements = contentArea.querySelectorAll("h2");
+    const contentArea       = document.getElementById("content-area");
+    const h2Elements        = contentArea.querySelectorAll("h2");
     const sectionsContainer = document.getElementById("page-sections-panel");
 
-    // Clear previous breadcrumbs
-    sectionsContainer.innerHTML = "";
+    /* 1 – remember where the user was */
+    const prevScrollTop = sectionsContainer.scrollTop;
 
-    // Create a list of H2 headings as vertical links
+    /* 2 – rebuild the list */
+    sectionsContainer.innerHTML = "";
+    const frag = document.createDocumentFragment();
+
     h2Elements.forEach((h2) => {
         if (!h2.id) {
-            // Create a slug from the text if no ID exists
-            const slug = h2.textContent.toLowerCase().replace(/\s+/g, '-');
-            h2.id = slug;
+            h2.id = h2.textContent
+                .toLowerCase()
+                .replace(/\s+/g, "-");
         }
-
-        const link = document.createElement("a");
-        link.href = `#${h2.id}`;
+        const link   = document.createElement("a");
+        link.href    = `#${h2.id}`;
         link.textContent = h2.textContent;
-        sectionsContainer.appendChild(link);
+        frag.appendChild(link);
     });
+
+    sectionsContainer.appendChild(frag);
+
+    /* 3 – restore scroll position so the list doesn’t jump */
+    sectionsContainer.scrollTop = prevScrollTop;
 }
