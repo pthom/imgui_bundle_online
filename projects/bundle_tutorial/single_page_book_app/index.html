@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="resources_singlepage/style.css" />
 </head>
 <body>
-<header class="main-header">
-    <div class="header-buttons">
-        <a href="https://github.com" target="_blank" class="header-btn">GitHub</a>
-    </div>
-    <button id="page-sections-btn" class="toggle-sidebar" title="Contents">
-        <span class="icon">📖</span>
-    </button>
-</header>
 
 
 <!-- A splitter between the documentation content and the ImGui canvas
     (using Split.js) -->
 <div class="split">
-    <div class="layout-container" id="layout-container">
-        <nav id="toc-sidebar">
-            <h1>Immediate GUI Tutorial</h1>
-            <ul>
-                <!-- Navigation items -->
-            </ul>
-        </nav>
-        <main id="content-area-wrapper">
-            <div id="content-area"></div>
-        </main>
+    <div class="doc-layout-container" id="doc-layout-container">
+        <header class="main-header">
+            <div class="header-buttons">
+                <a href="https://github.com" target="_blank" class="header-btn">GitHub</a>
+            </div>
+            <button id="page-sections-btn" class="toggle-sidebar" title="Contents">
+                <span class="icon">📖</span>
+            </button>
+        </header>
+
+        <div class="toc-and-doc" id="toc-and-doc">
+            <nav id="toc-sidebar">
+                <h1>Immediate GUI Tutorial</h1>
+                <ul>
+                    <!-- Navigation items -->
+                </ul>
+            </nav>
+            <main id="content-area-wrapper">
+                <div id="content-area"></div>
+            </main>
+        </div>
+
+        <!-- page-sections-panel: This is where the page sections will be displayed
+     in a panel which is hidden by default and slides from the right -->
+        <div id="page-sections-panel" class="page-sections"></div>
+
     </div>
 
     <div id="imgui-canvas-div">
@@ -41,9 +49,6 @@
 
 </div>
 
-<!-- page-sections-panel: This is where the page sections will be displayed
-     in a panel which is hidden by default, and slides from the right -->
-<div id="page-sections-panel" class="page-sections"></div>
 
 <script src="pyodide_dist/pyodide.js"></script>
 <script type="module" src="resources_singlepage/app.js"></script>

@@ -76,14 +76,21 @@ body {
 /* ==========================
    Layout Container
 ========================== */
-.layout-container {
+.doc-layout-container {
+    flex: 1;                     /* fill the rest of the window below the header */
+    overflow: hidden;            /* no scrolling for the container itself */
+    height: 100%;
+}
+
+.toc-and-doc {
     flex: 1;                     /* fill the rest of the window below the header */
     display: grid;
     grid-template-columns: 200px auto; /* sidebar - content */
     grid-template-areas: "sidebar content";
     gap: 1rem;
     overflow: hidden;            /* no scrolling for the container itself */
-    /*height: calc(100% - 3rem); !* using flex:1 now *!*/
+    height: 100%;
+    /*height: calc(100% - 3rem); !* !* using flex:1 now *!*!*/
 }
 
 /* ==========================

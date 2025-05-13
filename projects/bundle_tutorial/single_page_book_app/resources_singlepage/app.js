@@ -16,7 +16,7 @@ function _triggerWindowResizeToForceImGuiSizeRefresh() {
 
 function _createSplitBetweenContentAndImGuiCanvas()
 {
-    Split(['#layout-container', '#imgui-canvas-div'], {
+    Split(['#doc-layout-container', '#imgui-canvas-div'], {
         sizes: [60, 40],
         minSize: 0,
         gutterSize: 8,
