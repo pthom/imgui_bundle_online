@@ -17,7 +17,7 @@ function _createSplitBetweenContentAndImGuiCanvas()
     Split(['#doc-layout-container', '#imgui-canvas-div'], {
         sizes: [60, 40],
         minSize: 0,
-        gutterSize: 8,
+        gutterSize: 14,
         cursor: 'col-resize',
         onDrag: () => {
             _triggerWindowResizeToForceImGuiSizeRefresh();
