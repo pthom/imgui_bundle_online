@@ -112,7 +112,7 @@ async function _initializeCodeMirrorEditors(baseUrlPath) {
 
                 if (language === "python") {
                     extensions.push(python());
-                } else if (language === "cpp") {
+                } else if ((language === "cpp") || (language === "c++")){
                     extensions.push(cpp());
                 }
 
