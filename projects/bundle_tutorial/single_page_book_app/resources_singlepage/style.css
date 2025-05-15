@@ -63,17 +63,24 @@ body {
     height: 100%;
 }
 
+/* Base gutter style */
 .gutter {
-    background-color: #eee;
+    background-color: #555;
     background-repeat: no-repeat;
-    background-position: 50%;
+    background-position: center;
+    background-size: 16px 16px;
+    cursor: col-resize;
+    transition: background-color 0.3s;
+}
+
+/* Optional hover effect */
+.gutter:hover {
+    background-color: #444;
 }
 
 .gutter.gutter-horizontal {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
-    cursor: col-resize;
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%2220%22%20viewBox%3D%220%200%208%2020%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%224%22%20cy%3D%224%22%20r%3D%221.5%22%20fill%3D%22%23aaa%22/%3E%3Ccircle%20cx%3D%224%22%20cy%3D%2210%22%20r%3D%221.5%22%20fill%3D%22%23aaa%22/%3E%3Ccircle%20cx%3D%224%22%20cy%3D%2216%22%20r%3D%221.5%22%20fill%3D%22%23aaa%22/%3E%3C/svg%3E");
 }
-
 
 /* ==========================
    Layout Container
@@ -354,4 +361,108 @@ body {
 
 .run-python-button:hover {
     background-color: #0056b3;
+}
+
+
+/* ==========================
+   Dark Mode
+========================== */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .main-header {
+    background-color: #1f1f1f;
+    border-bottom-color: #333;
+    box-shadow: none;
+}
+
+body.dark-mode .header-btn {
+    color: #90caf9;
+}
+
+body.dark-mode .header-btn:hover {
+    background-color: #333;
+}
+
+body.dark-mode #toc-sidebar,
+body.dark-mode #content-area,
+body.dark-mode #content-area-wrapper,
+body.dark-mode .page-sections,
+body.dark-mode .code-editor-tab-content,
+body.dark-mode .codemirror-placeholder,
+body.dark-mode .codemirror-wrapper {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode #toc-sidebar a,
+body.dark-mode .page-sections a {
+    color: #90caf9;
+}
+
+body.dark-mode #toc-sidebar a:hover,
+body.dark-mode .page-sections a:hover {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .code-editor-tab-button {
+    background-color: #2e2e2e;
+    color: #ccc;
+}
+
+body.dark-mode .code-editor-tab-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+body.dark-mode .code-editor-tab-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+body.dark-mode .run-python-button {
+    background-color: #007bff;
+}
+
+body.dark-mode .run-python-button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .code-editor-tab-container {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+}
+
+body.dark-mode .code-editor-tab-buttons {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .code-editor-tab-button {
+    background-color: #555;
+    color: #ccc;
+}
+
+body.dark-mode .code-editor-tab-button:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode .code-editor-tab-button.active {
+    background-color: #007bff;
+    color: white;
+    border-bottom: 2px solid #ffffff;
+}
+
+body.dark-mode a {
+    color: #90caf9; /* soft blue, great contrast */
+    text-decoration: none;
+}
+
+body.dark-mode a:hover {
+    color: #ffffff;
+    text-decoration: underline;
 }

@@ -1,6 +1,7 @@
 import { EditorState } from "@codemirror/state";
 import { EditorView, lineNumbers, highlightSpecialChars, drawSelection, dropCursor, rectangularSelection, highlightActiveLine } from "@codemirror/view";
 import { defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
+import { oneDark, oneDarkHighlightStyle } from "@codemirror/theme-one-dark";
 import { python } from "@codemirror/lang-python";
 import { cpp } from "@codemirror/lang-cpp";
 import { marked } from "marked";
@@ -94,21 +95,30 @@ async function _initializeCodeMirrorEditors(baseUrlPath) {
                 const cmPlaceholder = tabPane.querySelector(".codemirror-placeholder");
                 cmPlaceholder.appendChild(wrapper);
 
+                const isDarkMode = document.body.classList.contains("dark-mode");
+
                 // Build up CodeMirror extensions
                 const extensions = [
                     lineNumbers(),
-                    syntaxHighlighting(defaultHighlightStyle),
                     highlightSpecialChars(),
                     drawSelection(),
                     dropCursor(),
                     rectangularSelection(),
                     highlightActiveLine(),
+                    isDarkMode
+                        ? syntaxHighlighting(oneDarkHighlightStyle)
+                        : syntaxHighlighting(defaultHighlightStyle),
                 ];
 
                 if (language === "python") {
                     extensions.push(python());
                 } else if (language === "cpp") {
                     extensions.push(cpp());
+                }
+
+                // Detect if dark mode is active
+                if (isDarkMode) {
+                    extensions.push(oneDark);
                 }
 
                 // Create the editor in the wrapper
