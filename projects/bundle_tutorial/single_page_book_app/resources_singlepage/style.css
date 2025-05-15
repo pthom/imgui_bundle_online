@@ -97,6 +97,7 @@ body {
     height: 100%;
     overflow: hidden;
     gap: 1rem;
+    position: relative;
 }
 
 /* ==========================
@@ -215,7 +216,7 @@ body {
    (appear at the right when the user clicks on a button)
 ========================== */
 .page-sections {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     width: 300px;
