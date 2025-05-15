@@ -1,9 +1,7 @@
-import { initTOC, tocRoot } from "./toc_loader.js";
-import { loadPage } from "./page_loader.js";
-import { initializePyodideHelper } from "./pyodide_helper.js";
-import { registerPageSectionEvents} from "./page_sections";
+import {initializePyodideHelper} from "./pyodide_helper.js";
+import {registerPageSectionEvents} from "./page_sections";
 import Split from 'split.js';
-
+import {initializeNavigation} from "./navig.js";
 
 function _triggerWindowResizeToForceImGuiSizeRefresh() {
     // Important:
@@ -65,8 +63,7 @@ function _registerDarkModeEvents()
 `;
     function isDarkMode()
     {
-        const isDark = document.body.classList.contains("dark-mode");
-        return isDark;
+        return document.body.classList.contains("dark-mode");
     }
 
     // Sets Dark Mode, stores the value in localStorage, and updates the button icon
@@ -108,18 +105,13 @@ function _registerDarkModeEvents()
 
 
 async function initializeAll() {
+
     _registerDarkModeEvents();
-
-    await initTOC();
-
     registerPageSectionEvents();
     _registerToggleTocBtnEvents();
-
     _createSplitBetweenContentAndImGuiCanvas();
 
-    // Load the root page
-    const rootPage = tocRoot();
-    loadPage(rootPage.file + ".md");
+    await initializeNavigation();
 
     // Initialize Pyodide environment
     await initializePyodideHelper();

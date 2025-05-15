@@ -1,12 +1,11 @@
 import { marked } from "marked";
-import { baseUrl } from "marked-base-url";
 import { renderMarkdownAndCodeEditors } from "./code_editor.js";
 import { updatePageSections } from "./page_sections.js";
 
 // Custom renderer to preserve `{literalinclude}` directives
 const renderer = new marked.Renderer();
 
-renderer.code = (code, lang, escaped) => {
+renderer.code = (code, _lang, _escaped) => {
     // Return the code block as-is with a `literalinclude` class
     return `<pre><code class="literalinclude">${code}</code></pre>`;
 };

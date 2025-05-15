@@ -186,27 +186,6 @@ function _setupCodeEditorTabs(containers) {
 }
 
 
-function _addCodeEditorTabEventListeners(container) {
-    const buttons = container.querySelectorAll(".code-editor-tab-button");
-    const panes = container.querySelectorAll(".code-editor-tab-pane");
-
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const targetTab = button.dataset.tab;
-
-            // Deactivate all buttons and panes
-            buttons.forEach(btn => btn.classList.remove("active"));
-            panes.forEach(pane => pane.classList.add("hidden"));
-
-            // Activate the clicked button and its corresponding pane
-            button.classList.add("active");
-            const activePane = [...panes].find(pane => pane.dataset.language === targetTab);
-            if (activePane) activePane.classList.remove("hidden");
-        });
-    });
-}
-
-
 export async function renderMarkdownAndCodeEditors(mdText, baseUrlPath) {
     // Process `{codes_include}` blocks into editor placeholders
     const processedMdText = await _processCodesIncludeInMarkdown(mdText, baseUrlPath);
