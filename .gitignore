@@ -6,3 +6,4 @@ __pycache__
 .idea/
 v3*
 pyodide_dist/
+pyodide_dist.tgz
