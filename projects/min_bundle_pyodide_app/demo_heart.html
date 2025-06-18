@@ -65,16 +65,13 @@ if __name__ == "__main__":
         // 2. SDL requires to enable an opt-in flag :
         pyodide._api._skip_unwind_fatal_error = true;
 
-        // Load packages
-        // 1. Initialize micropip
-        await pyodide.loadPackage("micropip");
-        const micropip = pyodide.pyimport("micropip");
-        // 2. Install imgui_bundle and its dependencies
-        await micropip.install('imgui_bundle');
-        await micropip.install("typing_extensions")
-        await micropip.install("pydantic")
-        await micropip.install("munch")
-        await micropip.install("numpy")
+        // 3. Load imgui_bundle
+        // 3.i Either via loadPackage
+        await pyodide.loadPackage("imgui_bundle");
+        // 3.ii Or with micropip
+        // await pyodide.loadPackage("micropip");
+        // const micropip = pyodide.pyimport("micropip");
+        // await micropip.install('imgui_bundle');
 
         // Run the Python code
         pyodide.runPython(pythonCode);
