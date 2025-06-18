@@ -18,3 +18,5 @@ tutorial_book_pdf:
 tutorial_srv_dev:
     cd single_page_book_app && npm run dev
 
+gpt_files_content:
+    for f in $(cat f.txt); do echo "===========================================================================";echo "File $f"; echo "==========================================================================="; echo '```'; cat $f; echo '```'; done
