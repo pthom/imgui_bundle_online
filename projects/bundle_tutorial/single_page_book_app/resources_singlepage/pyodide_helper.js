@@ -27,13 +27,13 @@ async function _passCanvasToPyodide() {
     // console.log("initEmscriptenCanvas canvas set");
 }
 
-// Handle canvas resizing (not called at the moment)
-function _passCanvasSizeToEmscripten() {
-    const canvas = _getEmscriptenCanvas();
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-    // Inform your rendering context about the resize if necessary
-}
+// // Handle canvas resizing (not called at the moment)
+// function _passCanvasSizeToEmscripten() {
+//     const canvas = _getEmscriptenCanvas();
+//     canvas.width = canvas.clientWidth;
+//     canvas.height = canvas.clientHeight;
+//     // Inform your rendering context about the resize if necessary
+// }
 
 // GUI utilities
 // ===============================================
@@ -170,5 +170,5 @@ export async function runPythonCode(code) {
 export async function initializePyodideHelper()
 {
     await _loadPyodideAndPackages();
-    _passCanvasToPyodide();
+    await _passCanvasToPyodide();
 }

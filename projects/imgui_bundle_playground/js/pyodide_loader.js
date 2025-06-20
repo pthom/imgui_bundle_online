@@ -79,19 +79,14 @@ async function loadPyodideAndPackages() {
         const packages = [
             // For imgui_bundle below
             // -----------------------
-            'numpy',  // 2.8 MB
-            'pydantic', // 1.3 + 0.4 MB = 1.7 MB
-            'typing_extensions', // 34 KB
-            'munch', // 10 KB
             'imgui_bundle', // 9.7 MB (with 3 MB for demos_assets, 6 MB native)
-            // 'pillow', // 964 KB
+            'opencv-python', // 11 MB
 
             // For fiatlight below
             // --------------------
-            'requests',  // 61KB, For word count demo (we download the Hamlet text)
-            'pandas', // 5.4 MB
+            // 'requests',  // 61KB, For word count demo (we download the Hamlet text)
+            // 'pandas', // 5.4 MB
             // 'matplotlib', // 6.2 MB
-            'opencv-python', // 11 MB
             // baseUrl + `/pyodide_dist/fiatlight-0.1.0-py3-none-any.whl`, // 3.5 MB
 
             // For scatter_widget_bundle

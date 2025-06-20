@@ -10,7 +10,7 @@ export function registerPageSectionEvents() {
         e.stopPropagation();
     });
 
-    // Close panel when clicking outside
+    // Close the panel when clicking outside
     document.addEventListener("click", (e) => {
         if (pageSectionsPanelVisible && !pageSectionsPanel.contains(e.target) && e.target !== pageSectionsBtn) {
             pageSectionsPanelVisible = false;

@@ -1,4 +1,4 @@
-import { loadPage } from "./page_loader.js";
+import { navigate } from "./navig.js";
 
 let gToc;
 
@@ -38,12 +38,12 @@ function _buildTocList(toc, container) {
 
             li.appendChild(subUl);
 
-            // Attach toggle behavior and page load to chapter link
+            // Attach toggle behavior and page load to links in chapters
             const chapterLink = li.querySelector("a");
             chapterLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 _toggleSubsections(subUl, li); // Expand or collapse subsections
-                loadPage(chapter.file + ".md"); // Load chapter page
+                navigate(chapter.file ); // Load chapter page
             });
         }
     });
@@ -60,7 +60,7 @@ function _createTocItem(item, isChapter = false) {
     link.addEventListener("click", (e) => {
         e.preventDefault();
         if (!isChapter) {
-            loadPage(item.file + ".md"); // Load page if it's a section
+            navigate(item.file); // Load the page if it's a section
         }
     });
     li.appendChild(link);
