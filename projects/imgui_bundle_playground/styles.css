@@ -34,14 +34,11 @@ html, body {
     transform: scale(1.05);
 }
 
-#motto {
-    font-size: 1.2em;
-}
-
 #header-right {
     display: flex;
     align-items: center;
 }
+
 
 /* Dropdown styles */
 #example-selector {

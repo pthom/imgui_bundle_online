@@ -20,6 +20,28 @@
             height: 100%;
             overflow: hidden;
         }
+
+        /* motto styles */
+        #motto {
+            margin-left: 1rem;
+            font-family: system-ui, sans-serif;
+            text-align: left;
+        }
+
+        .motto-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0;
+            color: #eee;
+        }
+
+        .motto-subtitle {
+            font-size: 0.7rem;
+            font-weight: 400;
+            margin: 0.25rem 0 0 0;
+            color: #bbb;
+        }
+
     </style>
 </head>
 <body>
@@ -47,7 +69,11 @@
                 ">
             </a>
             <!-- Motto -->
-            <div id="motto">Live code, instant Web GUI. Pure Python: no CSS, no React, no fuss.</div>
+            <div id="motto">
+                <h1 class="motto-title">Dear ImGui Bundle Playground</h1>
+                <p class="motto-subtitle">Live code. Instant Web GUI. Pure Python.</p>
+                <p class="motto-subtitle">Fully static. No CSS, no React. No fuss.</p>
+            </div>
         </div>
         <div id="header-right">
             <!-- Dropdown for Example Files -->

@@ -8,7 +8,7 @@ completely different trajectories.
 """
 
 import numpy as np
-from imgui_bundle import implot3d, immapp, imgui, imgui_md, hello_imgui
+from imgui_bundle import implot3d, immapp, imgui, imgui_md, hello_imgui, icons_fontawesome_4
 from dataclasses import dataclass
 
 
@@ -88,6 +88,8 @@ class CompareLorenzTrajectories:
 
     def gui(self):
         imgui_md.render_unindented(__doc__)
+        imgui.text(f"Running at {hello_imgui.frame_rate():.2f} FPS")
+
         imgui.separator_text("Parameters")
         self.gui_params()
         imgui.separator_text("Plot")
