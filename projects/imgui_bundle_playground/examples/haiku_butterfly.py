@@ -88,7 +88,7 @@ class CompareLorenzTrajectories:
 
     def gui(self):
         imgui_md.render_unindented(__doc__)
-        imgui.text(f"Running at {hello_imgui.frame_rate():.2f} FPS")
+        imgui.text(f"Running at {hello_imgui.frame_rate():.1f} FPS")
 
         imgui.separator_text("Parameters")
         self.gui_params()

@@ -17,7 +17,7 @@ def gui():
     global heart_pulse_rate, phase, t0, x, y
 
     imgui.text("Made with " + icons_fontawesome_4.ICON_FA_HEART + " using Dear ImGui and ImPlot")
-    imgui.text(f"Running at {hello_imgui.frame_rate():.0f} FPS")
+    imgui.text(f"Running at {hello_imgui.frame_rate():.1f} FPS")
 
     t = time.time()
     phase += (t - t0) * heart_pulse_rate / (np.pi * 2)
