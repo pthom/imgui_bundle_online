@@ -1,3 +1,6 @@
+"""An animated plot of a heart shape
+using ImPlot in Dear ImGui Bundle."""
+
 import time
 import numpy as np
 

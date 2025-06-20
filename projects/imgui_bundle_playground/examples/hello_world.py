@@ -1,5 +1,6 @@
-# Example 1: Hello World
-"""This example demonstrates the basic usage of Dear ImGui by creating a simple "Hello World" window.
+"""Hello World example:
+Create an App in 3 lines of code,
+using Dear ImGui and Hello ImGui!
 """
 from imgui_bundle import hello_imgui, imgui
 

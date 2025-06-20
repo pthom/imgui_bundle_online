@@ -1,16 +1,16 @@
-# Part of ImGui Bundle - MIT License - Copyright (c) 2022-2024 Pascal Thomet - https://github.com/pthom/imgui_bundle
-doc = """
-Plot using ImPlot with a draggable rectangle
+"""Plot using ImPlot with a draggable rectangle
 ============================================
 
-This example shows how to use the `implot.drag_rect` function to create a draggable rectangle on a plot.
+This example shows how to use the `implot.drag_rect`
+function to create a draggable rectangle on a plot.
 
 [ImPlot](https://github.com/epezent/implot) is a plotting extension for [Dear ImGui](https://github.com/ocornut/imgui),
 which is included in the ImGui Bundle.
 
 It focuses on **fast** rendering and ease of use.
 
-*Note: this markdown text is rendered using the `imgui_md` module, which is part of [Dear ImGui Bundle](https://githb.com/pthom/imgui_bundle).*
+*Note: this markdown text is rendered using the `imgui_md` module,
+which is part of [Dear ImGui Bundle](https://githb.com/pthom/imgui_bundle).*
 
 """
 import math
@@ -44,7 +44,7 @@ class DemoDragRectState:
 
 @immapp.static(state=DemoDragRectState())
 def demo_drag_rects():
-    imgui_md.render_unindented(doc)
+    imgui_md.render_unindented(__doc__)
     imgui.separator_text("Plot with a draggable rectangle")
 
     state = demo_drag_rects.state

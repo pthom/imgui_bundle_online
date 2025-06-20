@@ -1,5 +1,6 @@
+"""This example demonstrates how to use ImPlot
+with ImGui in a Python application."""
 import random
-
 import numpy as np
 from imgui_bundle import imgui, immapp, implot, imgui_knobs
 

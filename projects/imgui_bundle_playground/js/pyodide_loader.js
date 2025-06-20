@@ -81,6 +81,7 @@ async function loadPyodideAndPackages() {
             // -----------------------
             'imgui_bundle', // 9.7 MB (with 3 MB for demos_assets, 6 MB native)
             'opencv-python', // 11 MB
+            'pillow',
 
             // For fiatlight below
             // --------------------

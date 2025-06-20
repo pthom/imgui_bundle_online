@@ -1,3 +1,8 @@
+"""Demonstrates the use of ImmVision
+to display and analyze images.
+
+Based on a demonstration of the Sobel filter.
+"""
 import numpy as np
 from typing import Any
 from numpy.typing import NDArray
