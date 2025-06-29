@@ -58,20 +58,33 @@ class CompareLorenzTrajectories:
         self.traj2 = AnimatedLorenzTrajectory(x + self.initial_delta, y, z)
 
     def gui_params(self):
+        half_width = hello_imgui.em_size(10.0)
+        # First row of parameters
+        imgui.set_next_item_width(half_width)
         _, PARAMS.sigma = imgui.slider_float("Sigma", PARAMS.sigma, 0.0, 100.0)
         imgui.set_item_tooltip("Controls the rate of divergence between nearby points (chaos level).")
+        imgui.same_line()
 
+        imgui.set_next_item_width(half_width)
         _, PARAMS.rho = imgui.slider_float("Rho", PARAMS.rho, 0.0, 100.0)
         imgui.set_item_tooltip("Determines the size and shape of the attractor.")
+        imgui.same_line()
 
+        imgui.set_next_item_width(half_width)
         _, PARAMS.beta = imgui.slider_float("Beta", PARAMS.beta, 0.0, 10.0)
         imgui.set_item_tooltip("A damping parameter affecting vertical movement.")
 
+        # Second row of parameters + Reset button
+        imgui.set_next_item_width(half_width)
         _, PARAMS.dt = imgui.slider_float("dt", PARAMS.dt, 0.0, 0.05)
         imgui.set_item_tooltip("Time step size for numerical integration (smaller is smoother).")
+        imgui.same_line()
 
+        imgui.set_next_item_width(half_width)
         _, self.initial_delta = imgui.slider_float("Initial Delta", self.initial_delta, 0.0, 0.2)
         imgui.set_item_tooltip("Initial difference between trajectories to demonstrate divergence.")
+
+        imgui.same_line()
 
         if imgui.button("Reset"):
             self.init_trajectories()

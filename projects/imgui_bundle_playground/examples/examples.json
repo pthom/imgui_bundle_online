@@ -13,6 +13,10 @@
         "filename": "implot3d_demo_link.py"
       },
       {
+        "label": "Themes demo",
+        "filename": "demo_themes.py"
+      },
+      {
         "label": "Image processing",
         "filename": "dem_immvision_process.py"
       },
