@@ -8,7 +8,7 @@
     <script src="pyodide_dist/pyodide.js"></script>
 </head>
 <body>
-<canvas id="canvas"></canvas>
+<canvas id="canvas" tabindex="0"></canvas>
 <script type="text/javascript">
 
     // ====================== Start of Python code ============================
