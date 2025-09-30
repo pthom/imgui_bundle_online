@@ -88,7 +88,7 @@ async function loadPyodideAndPackages() {
             // 'requests',  // 61KB, For word count demo (we download the Hamlet text)
             // 'pandas', // 5.4 MB
             // 'matplotlib', // 6.2 MB
-            // baseUrl + `/pyodide_dist/fiatlight-0.1.0-py3-none-any.whl`, // 3.5 MB
+            baseUrl + `/pyodide_dist/fiatlight-0.2.0-py3-none-any.whl`, // 3.5 MB
 
             // For scatter_widget_bundle
             // --------------------------
