@@ -4,7 +4,11 @@ using ImPlot in Dear ImGui Bundle."""
 import time
 import numpy as np
 
+import imgui_bundle
 from imgui_bundle import implot, imgui, immapp, hello_imgui, icons_fontawesome_4
+
+
+print(f"{imgui_bundle.__version__=}")
 
 # Fill x and y whose plot is a heart
 vals = np.arange(0, np.pi * 2, 0.01)

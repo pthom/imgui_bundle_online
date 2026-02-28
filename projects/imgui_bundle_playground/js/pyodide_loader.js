@@ -75,20 +75,23 @@ async function loadPyodideAndPackages() {
         const baseUrl = `${window.location.origin}${window.location.pathname}`;
         console.log('Base URL:', baseUrl);
 
+        await pyodide.loadPackage("../bundle_wheel/imgui_bundle-1.92.600-cp313-cp313-pyodide_2025_0_wasm32.whl");
+
+
         // List of packages to install
         const packages = [
             // For imgui_bundle below
             // -----------------------
-            'imgui_bundle', // 9.7 MB (with 3 MB for demos_assets, 6 MB native)
+            // 'imgui_bundle', // 9.7 MB (with 3 MB for demos_assets, 6 MB native)
             'opencv-python', // 11 MB
             'pillow',
 
-            // For fiatlight below
-            // --------------------
+            // // For fiatlight below
+            // // --------------------
             // 'requests',  // 61KB, For word count demo (we download the Hamlet text)
             // 'pandas', // 5.4 MB
             // 'matplotlib', // 6.2 MB
-            baseUrl + `/pyodide_dist/fiatlight-0.2.0-py3-none-any.whl`, // 3.5 MB
+            // baseUrl + `/pyodide_dist/fiatlight-0.2.0-py3-none-any.whl`, // 3.5 MB
 
             // For scatter_widget_bundle
             // --------------------------

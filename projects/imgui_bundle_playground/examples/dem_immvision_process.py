@@ -11,7 +11,6 @@ import cv2  # type: ignore
 import math
 
 from imgui_bundle import imgui, immvision, immapp, imgui_md
-from imgui_bundle.demos_python import demo_utils
 
 immvision.use_rgb_color_order()
 
@@ -111,8 +110,20 @@ class AppState:
     immvision_params: immvision.ImageParams
     immvision_params_sobel: immvision.ImageParams
 
-    def __init__(self, image_file: str):
-        self.image = demo_utils.imread_pil(image_file)
+    def __init__(self):
+        # Create a RGB image programmatically, of a rainbow
+        self.image = np.zeros((600, 600, 3), dtype=np.uint8)
+        for i in range(self.image.shape[0]):
+            for j in range(self.image.shape[1]):
+                self.image[i, j] = (
+                    int(255 * i / self.image.shape[0]),
+                    int(255 * j / self.image.shape[1]),
+                    128,
+                )
+        # Add a circle in the middle
+        cv2.circle(self.image, (300, 300), 100, (255, 255, 255), -1)
+
+        #self.image = demo_utils.imread_pil(image_file)
         self.sobel_params = SobelParams()
         self.image_sobel = compute_sobel(self.image, self.sobel_params)
 
@@ -133,7 +144,7 @@ def demo_gui():
     static = demo_gui
 
     if static.app_state is None:
-        static.app_state = AppState(demo_utils.demos_assets_folder() + "/images/house.jpg")
+        static.app_state = AppState()
 
     imgui_md.render_unindented(
         """
